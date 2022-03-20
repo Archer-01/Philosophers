@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 08:20:32 by hhamza           ###   ########.fr       */
+/*   Created: 2021/11/04 16:13:16 by hhamza            #+#    #+#             */
+/*   Updated: 2022/03/20 06:28:15 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+/**
+ * @brief Allocate cout * size bytes in heap and sets everything to zero
+ *
+ * @param count: cout of elements to be allocated
+ * @param size: size of each element in count
+ * @return void*: allocated memory address
+ */
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_philo_args	*philo_args;
+	void	*ptr;
 
-	if (argc != 5 && argc != 6)
-	{
-		ft_putendl_fd("Usage: ./philo philo_num death_time eat_time sleep_time \
-[min_eat_count]", STDERR_FILENO);
-		return (EXIT_FAILURE);
-	}
-	philo_args = ft_parse_philo_args(argc, argv);
-	if (philo_args == NULL)
-		return (EXIT_FAILURE);
-	printf("philosophers is loading...\n");
-	free(philo_args);
-	return (0);
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	memset(ptr, 0, count * size);
+	return (ptr);
 }

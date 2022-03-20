@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 08:20:32 by hhamza           ###   ########.fr       */
+/*   Created: 2021/11/09 16:52:45 by hhamza            #+#    #+#             */
+/*   Updated: 2022/03/20 06:09:46 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+/**
+ * @brief Put a character to file pointed by file descriptor
+ *
+ * @param c: character to put
+ * @param fd: file descriptor
+ */
+void	ft_putchar_fd(char c, int fd)
 {
-	t_philo_args	*philo_args;
-
-	if (argc != 5 && argc != 6)
-	{
-		ft_putendl_fd("Usage: ./philo philo_num death_time eat_time sleep_time \
-[min_eat_count]", STDERR_FILENO);
-		return (EXIT_FAILURE);
-	}
-	philo_args = ft_parse_philo_args(argc, argv);
-	if (philo_args == NULL)
-		return (EXIT_FAILURE);
-	printf("philosophers is loading...\n");
-	free(philo_args);
-	return (0);
+	write(fd, &c, 1);
 }

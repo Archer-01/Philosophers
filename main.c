@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 08:20:32 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/20 09:26:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 5 && argc != 6)
 	{
-		ft_putendl_fd("Usage: ./philo philo_num death_time eat_time sleep_time \
-[min_eat_count]", STDERR_FILENO);
+		ft_putendl_fd(E_USAGE_MSG, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	philo_args = ft_parse_philo_args(argc, argv);

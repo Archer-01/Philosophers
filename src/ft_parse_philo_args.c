@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:48:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 08:39:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/20 09:28:53 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,18 @@ static t_bool	ft_check_philo_args(char **argv, t_philo_args *philo_args)
 		return (FALSE);
 	if (ft_check_philo_str_num(argv) == FALSE)
 	{
-		ft_putendl_fd("Error. Invalid arguments", STDERR_FILENO);
+		ft_putendl_fd(E_INVAL_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	if (philo_args->philo_count > 200)
 	{
-		ft_putendl_fd("Error. philosophers count must not exceed 200",
-			STDERR_FILENO);
+		ft_putendl_fd(E_PHILOCOUNT_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	if (philo_args->time_to_die < 60 || philo_args->time_to_eat < 60
 		|| philo_args->time_to_sleep < 60)
 	{
-		ft_putendl_fd("Error. time to die/sleep/eat must be 60ms or above",
-			STDERR_FILENO);
+		ft_putendl_fd(E_TIME_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -134,7 +132,7 @@ t_philo_args	*ft_parse_philo_args(int argc, char **argv)
 	philo_args = ft_calloc(1, sizeof(t_philo_args));
 	if (philo_args == NULL)
 	{
-		ft_putendl_fd("Error. failed to malloc philo_args", STDERR_FILENO);
+		ft_putendl_fd(E_MALLOC_MSG, STDERR_FILENO);
 		return (NULL);
 	}
 	ft_set_philo_args(argc, argv, philo_args);

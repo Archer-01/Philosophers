@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 09:28:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/21 03:23:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define E_USAGE_MSG "Usage: ./philo philo_num death_time eat_time sleep_time \
 [min_eat_count]"
-# define E_MALLOC_MSG "Error. failed to malloc philo_args"
+# define E_MALLOC_MSG "Error. malloc failed"
 # define E_INVAL_MSG "Error. Invalid arguments"
 # define E_PHILOCOUNT_MSG "Error. philosophers count must not exceed 200"
 # define E_TIME_MSG "Error. time to die/sleep/eat must be 60ms or above"

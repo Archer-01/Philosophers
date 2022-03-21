@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:48:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 09:28:53 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/21 04:03:43 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,9 @@ t_philo_args	*ft_parse_philo_args(int argc, char **argv)
 {
 	t_philo_args	*philo_args;
 
-	philo_args = ft_calloc(1, sizeof(t_philo_args));
+	philo_args = ft_allocate(1, sizeof(t_philo_args));
 	if (philo_args == NULL)
-	{
-		ft_putendl_fd(E_MALLOC_MSG, STDERR_FILENO);
 		return (NULL);
-	}
 	ft_set_philo_args(argc, argv, philo_args);
 	if (ft_check_philo_args(argv, philo_args) == FALSE)
 	{

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 04:03:00 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/21 09:33:12 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define E_INVAL_MSG "Error. Invalid arguments"
 # define E_PHILOCOUNT_MSG "Error. philosophers count must not exceed 200"
 # define E_TIME_MSG "Error. time to die/sleep/eat must be 60ms or above"
+# define E_MUTEX_CREAT "Error. failed to create mutex"
 
 typedef enum e_bool
 {
@@ -42,6 +43,12 @@ typedef struct s_philo_args
 	unsigned int	min_eat_count;
 }	t_philo_args;
 
+typedef struct philo_data
+{
+	t_philo_args	*philo_args;
+	pthread_mutex_t	*fork_mutexes;
+}	t_philo_data;
+
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
@@ -49,6 +56,10 @@ t_bool			ft_isdigit(int c);
 int				ft_atoi(const char *str);
 void			*ft_calloc(size_t count, size_t size);
 void			*ft_allocate(size_t count, size_t size);
+
 t_philo_args	*ft_parse_philo_args(int argc, char **argv);
+pthread_mutex_t	*ft_init_mutexes(size_t count);
+t_philo_data	*ft_init_philo_data(int argc, char **argv);
+void			ft_destroy_philo_data(t_philo_data *philo_data);
 
 #endif

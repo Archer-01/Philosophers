@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 09:33:12 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/21 09:55:37 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define E_PHILOCOUNT_MSG "Error. philosophers count must not exceed 200"
 # define E_TIME_MSG "Error. time to die/sleep/eat must be 60ms or above"
 # define E_MUTEX_CREAT "Error. failed to create mutex"
+# define E_THREAD_CREAT "Error. failed to create thread"
 
 typedef enum e_bool
 {
@@ -49,6 +50,14 @@ typedef struct philo_data
 	pthread_mutex_t	*fork_mutexes;
 }	t_philo_data;
 
+typedef struct s_philosopher
+{
+	unsigned int	id;
+	pthread_t		philo_thread;
+}	t_philosopher;
+
+typedef void	*(*t_routine)(void *);
+
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
@@ -61,5 +70,8 @@ t_philo_args	*ft_parse_philo_args(int argc, char **argv);
 pthread_mutex_t	*ft_init_mutexes(size_t count);
 t_philo_data	*ft_init_philo_data(int argc, char **argv);
 void			ft_destroy_philo_data(t_philo_data *philo_data);
+t_philosopher	*ft_init_philosophers(t_philo_data *philo_data);
+
+void			*ft_philo_routine(void *arg);
 
 #endif

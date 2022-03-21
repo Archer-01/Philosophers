@@ -15,6 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_philo_data	*philo_data;
+	t_philosopher	*philosophers;
 
 	if (argc != 5 && argc != 6)
 	{
@@ -24,6 +25,14 @@ int	main(int argc, char **argv)
 	philo_data = ft_init_philo_data(argc, argv);
 	if (philo_data == NULL)
 		return (EXIT_FAILURE);
+	philosophers = ft_init_philosophers(philo_data);
+	if (philosophers == NULL)
+	{
+		ft_destroy_philo_data(philo_data);
+		return (EXIT_FAILURE);
+	}
+	sleep(1);
 	ft_destroy_philo_data(philo_data);
+	free(philosophers);
 	return (0);
 }

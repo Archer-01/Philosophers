@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/22 02:53:47 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/22 03:47:29 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,18 @@ static t_bool	ft_create_thread(pthread_t *thread, t_routine routine,
  * @param philo: philo address
  * @param philo_id: philosopher id
  * @param arg: argument to be passed to philosopher therad routine
+ * @param philo_data: philo data (philo args & fork mutexes)
  * @return t_bool: TRUE on success, FALSE otherwise
  */
 static t_bool	ft_create_philosopher(t_philosopher *philo, int philo_id,
-	void *arg)
+	void *arg, t_philo_data	*philo_data)
 {
 	int	thread_success;
 
 	if (philo == NULL)
 		return (FALSE);
 	philo->id = philo_id;
+	philo->philo_data = philo_data;
 	thread_success
 		= ft_create_thread(&philo->philo_thread, &ft_philo_routine, arg);
 	if (thread_success == FALSE)
@@ -83,7 +85,8 @@ t_philosopher	*ft_init_philosophers(t_philo_data *philo_data)
 	while (i < philo_data->philo_args->philo_count)
 	{
 		philo_success
-			= ft_create_philosopher(&philosophers[i], i + 1, philo_data);
+			= ft_create_philosopher
+			(&philosophers[i], i + 1, &philosophers[i], philo_data);
 		if (philo_success == FALSE)
 		{
 			free(philosophers);

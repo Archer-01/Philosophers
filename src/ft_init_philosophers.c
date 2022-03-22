@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 09:28:54 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/22 02:53:47 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_bool	ft_create_thread(pthread_t *thread, t_routine routine,
  *
  * @param philo: philo address
  * @param philo_id: philosopher id
+ * @param arg: argument to be passed to philosopher therad routine
  * @return t_bool: TRUE on success, FALSE otherwise
  */
 static t_bool	ft_create_philosopher(t_philosopher *philo, int philo_id,

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/22 03:47:29 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/22 06:21:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static t_bool	ft_create_philosopher(t_philosopher *philo, int philo_id,
 	thread_success
 		= ft_create_thread(&philo->philo_thread, &ft_philo_routine, arg);
 	if (thread_success == FALSE)
+		return (FALSE);
+	if (pthread_detach(philo->philo_thread) != 0)
 		return (FALSE);
 	else
 		return (TRUE);

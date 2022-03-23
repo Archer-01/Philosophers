@@ -6,12 +6,19 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:57:48 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 06:39:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 09:20:01 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+/**
+ * @brief Philosophers routine.
+ *
+ * @param arg: argument (t_philosopher *)
+ * @return void*: On success this function never returns, on failure it returns
+ * NULL
+ */
 void	*ft_philo_routine(void *arg)
 {
 	t_philosopher	*philo;

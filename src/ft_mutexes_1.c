@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 03:48:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 03:48:45 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 05:22:25 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param mutex: mutex address
  * @return t_bool: TRUE on success, FALSE otherwise
  */
-static t_bool	ft_create_mutex(pthread_mutex_t *mutex)
+t_bool	ft_create_mutex(pthread_mutex_t *mutex)
 {
 	int	mutex_success;
 

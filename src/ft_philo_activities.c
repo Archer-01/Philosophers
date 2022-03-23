@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:50:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 04:31:11 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 06:02:09 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_bool	ft_think(t_philosopher *philo)
 		return (FALSE);
 	philo_id = philo->id;
 	begin_timestamp = philo->philo_data->begin_timestamp;
-	printf("%ld %u is thinking\n", curr_timestamp - *begin_timestamp, philo_id);
+	ft_thread_print(ACT_THINK, curr_timestamp - *begin_timestamp, philo_id,
+		&philo->philo_data->writing_mutex);
 	return (TRUE);
 }
 
@@ -66,13 +67,15 @@ t_bool	ft_get_fork(t_philosopher *philo, unsigned int fork_id)
 		begin_timestamp = philo->philo_data->begin_timestamp;
 		if (ft_get_timestamp(&curr_timestamp) == FALSE)
 			return (FALSE);
-		printf("%ld %u has taken a fork\n",
-			curr_timestamp - *begin_timestamp, philo_id);
+		ft_thread_print(ACT_FORK, curr_timestamp - *begin_timestamp, philo_id,
+			&philo->philo_data->writing_mutex);
 		return (TRUE);
 	}
 }
 
 /**
+	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo_id,
+		&philo->philo_data->writing_mutex);
  * @brief Eat (Philosopher activity)
  * Sleep for time_to_eat ms & print message
  *
@@ -93,7 +96,8 @@ t_bool	ft_eat(t_philosopher *philo)
 	begin_timestamp = philo->philo_data->begin_timestamp;
 	if (ft_get_timestamp(&curr_timestamp) == FALSE)
 		return (FALSE);
-	printf("%ld %u is eating\n", curr_timestamp - *begin_timestamp, philo_id);
+	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo_id,
+		&philo->philo_data->writing_mutex);
 	if (usleep(time_to_eat) == -1)
 		return (FALSE);
 	else
@@ -147,7 +151,8 @@ t_bool	ft_sleep(t_philosopher *philo)
 	begin_timestamp = philo->philo_data->begin_timestamp;
 	if (ft_get_timestamp(&curr_timestamp) == FALSE)
 		return (FALSE);
-	printf("%ld %u is sleeping\n", curr_timestamp - *begin_timestamp, philo_id);
+	ft_thread_print(ACT_SLEEP, curr_timestamp - *begin_timestamp, philo_id,
+		&philo->philo_data->writing_mutex);
 	if (usleep(time_to_sleep) == -1)
 		return (FALSE);
 	else

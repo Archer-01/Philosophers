@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 03:49:16 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 03:49:17 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 05:24:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv,
 		return (NULL);
 	}
 	philo_data->begin_timestamp = begin_timestamp;
-	return (philo_data);
+	if (ft_create_mutex(&philo_data->writing_mutex) == FALSE)
+		return (ft_destroy_philo_data(philo_data), NULL);
+	else
+		return (philo_data);
 }
 
 /**

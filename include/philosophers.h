@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/22 03:08:29 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 04:30:23 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@
 # define E_PHILOCOUNT_MSG "Error. philosophers count must not exceed 200"
 # define E_TIME_MSG "Error. time to die/sleep/eat must be 60ms or above"
 # define E_MUTEX_CREAT "Error. failed to create mutex"
+# define E_MUTEX_DESTROY "Error. failed to destroy mutex"
 # define E_THREAD_CREAT "Error. failed to create thread"
+# define E_TIMESTAMP "Error. gettimeofday failed"
+# define E_MUTEX_LOCK "Error. failed to lock mutex"
+# define E_MUTEX_UNLOCK "Error. failed to unlock mutex"
 
 typedef enum e_bool
 {
@@ -48,6 +52,7 @@ typedef struct philo_data
 {
 	t_philo_args	*philo_args;
 	pthread_mutex_t	*fork_mutexes;
+	time_t			*begin_timestamp;
 }	t_philo_data;
 
 typedef struct s_philosopher
@@ -69,10 +74,20 @@ void			*ft_allocate(size_t count, size_t size);
 
 t_philo_args	*ft_parse_philo_args(int argc, char **argv);
 pthread_mutex_t	*ft_init_mutexes(size_t count);
-t_philo_data	*ft_init_philo_data(int argc, char **argv);
+t_bool			ft_destroy_mutexes(pthread_mutex_t *mutexes, size_t count);
+t_philo_data	*ft_init_philo_data(int argc, char **argv, \
+	time_t *begin_timestamp);
 void			ft_destroy_philo_data(t_philo_data *philo_data);
 t_philosopher	*ft_init_philosophers(t_philo_data *philo_data);
 
+t_bool			ft_think(t_philosopher *philo);
+t_bool			ft_get_fork(t_philosopher *philo, unsigned int fork_id);
+t_bool			ft_eat(t_philosopher *philo);
+t_bool			ft_release_fork(t_philosopher *philo, unsigned int fork_id);
+t_bool			ft_sleep(t_philosopher *philo);
 void			*ft_philo_routine(void *arg);
+
+t_bool			ft_get_timestamp(time_t *timestamp_ptr);
+time_t			*ft_get_timestamp_ptr(void);
 
 #endif

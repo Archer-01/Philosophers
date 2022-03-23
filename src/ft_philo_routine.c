@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:57:48 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/22 04:21:53 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/23 04:38:06 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,27 @@ void	*ft_philo_routine(void *arg)
 {
 	t_philosopher	*philo;
 	size_t			fork_count;
-	size_t			first_fork;
-	size_t			second_fork;
 
 	if (arg == NULL)
 		return (NULL);
-	usleep(100);
-	philo = (t_philosopher *) arg;
-	fork_count = philo->philo_data->philo_args->philo_count;
-	if (fork_count == 1)
+	while (TRUE)
 	{
-		printf("Yo, i'm philosopher no.%u - I can use one fork only\n",
-			philo->id);
-		return (NULL);
+		usleep(100);
+		philo = (t_philosopher *) arg;
+		if (ft_think(philo) == FALSE)
+			return (NULL);
+		fork_count = philo->philo_data->philo_args->philo_count;
+		if (ft_get_fork(philo, (size_t) philo->id - 1) == FALSE)
+			return (NULL);
+		if (ft_get_fork(philo, (size_t) philo->id % fork_count) == FALSE)
+			return (NULL);
+		if (ft_eat(philo) == FALSE)
+			return (NULL);
+		if (ft_release_fork(philo, (size_t) philo->id - 1) == FALSE)
+			return (NULL);
+		if (ft_release_fork(philo, (size_t) philo->id % fork_count) == FALSE)
+			return (NULL);
+		if (ft_sleep(philo) == FALSE)
+			return (NULL);
 	}
-	first_fork = philo->id - 1;
-	second_fork = ((size_t) philo->id) % fork_count;
-	printf("Yo, i'm philosopher no.%u - I can use the forks %zu and %zu\n",
-		philo->id, first_fork, second_fork);
-	return (NULL);
 }

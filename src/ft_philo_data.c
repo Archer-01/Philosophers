@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_philo_data.c                               :+:      :+:    :+:   */
+/*   ft_philo_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 04:37:43 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 09:19:29 by hhamza           ###   ########.fr       */
+/*   Created: 2022/03/23 03:49:16 by hhamza            #+#    #+#             */
+/*   Updated: 2022/03/23 03:49:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
  * @param argv: argument vector (array)
  * @return t_philo_data*: newly created philo data, NULL on failure
  */
-t_philo_data	*ft_init_philo_data(int argc, char **argv)
+t_philo_data	*ft_init_philo_data(int argc, char **argv,
+	time_t *begin_timestamp)
 {
 	t_philo_data	*philo_data;
 
-	if (argv == NULL)
+	if (argv == NULL || begin_timestamp == NULL)
 		return (NULL);
 	philo_data = ft_allocate(1, sizeof(t_philo_data));
 	if (philo_data == NULL)
@@ -41,6 +42,7 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv)
 		ft_destroy_philo_data(philo_data);
 		return (NULL);
 	}
+	philo_data->begin_timestamp = begin_timestamp;
 	return (philo_data);
 }
 
@@ -53,7 +55,10 @@ void	ft_destroy_philo_data(t_philo_data *philo_data)
 {
 	if (philo_data == NULL)
 		return ;
-	free(philo_data->philo_args);
+	ft_destroy_mutexes
+		(philo_data->fork_mutexes, philo_data->philo_args->philo_count);
 	free(philo_data->fork_mutexes);
+	free(philo_data->philo_args);
+	free(philo_data->begin_timestamp);
 	free(philo_data);
 }

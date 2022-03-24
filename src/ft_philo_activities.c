@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:50:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 06:02:09 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/24 09:53:57 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_bool	ft_eat(t_philosopher *philo)
 		return (FALSE);
 	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo_id,
 		&philo->philo_data->writing_mutex);
-	if (usleep(time_to_eat) == -1)
+	if (usleep(time_to_eat * 1000) == -1)
 		return (FALSE);
 	else
 		return (TRUE);
@@ -153,7 +153,7 @@ t_bool	ft_sleep(t_philosopher *philo)
 		return (FALSE);
 	ft_thread_print(ACT_SLEEP, curr_timestamp - *begin_timestamp, philo_id,
 		&philo->philo_data->writing_mutex);
-	if (usleep(time_to_sleep) == -1)
+	if (usleep(time_to_sleep * 1000) == -1)
 		return (FALSE);
 	else
 		return (TRUE);

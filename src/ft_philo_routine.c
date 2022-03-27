@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:57:48 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/27 02:54:37 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/27 03:18:47 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	*ft_philo_routine(void *arg)
 	if (arg == NULL)
 		return (NULL);
 	philo = (t_philosopher *) arg;
-	usleep(100);
 	while (TRUE)
 	{
 		if (ft_think(philo) == FALSE)

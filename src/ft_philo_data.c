@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 03:49:16 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/27 03:15:32 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 04:55:32 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv,
 		return (NULL);
 	philo_data = ft_allocate(1, sizeof(t_philo_data));
 	if (philo_data == NULL)
+	{
+		free(begin_timestamp);
 		return (NULL);
+	}
 	philo_data->begin_timestamp = begin_timestamp;
 	philo_data->philo_args = ft_parse_philo_args(argc, argv);
 	if (philo_data->philo_args == NULL)
@@ -39,14 +42,10 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv,
 	philo_data->fork_mutexes
 		= ft_init_mutexes(philo_data->philo_args->philo_count);
 	if (philo_data->fork_mutexes == NULL)
-	{
-		ft_destroy_philo_data(philo_data);
-		return (NULL);
-	}
+		return (ft_destroy_philo_data(philo_data), NULL);
 	if (ft_create_mutex(&philo_data->writing_mutex) == FALSE)
 		return (ft_destroy_philo_data(philo_data), NULL);
-	else
-		return (philo_data);
+	return (philo_data);
 }
 
 /**

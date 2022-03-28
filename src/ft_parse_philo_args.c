@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:48:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 04:03:43 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 04:55:42 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_bool	ft_check_str_num(const char *str)
 {
 	int	i;
 
-	if (str == NULL)
+	if (str == NULL || str[0] == '\0')
 		return (FALSE);
 	i = 0;
 	if (str[i] == '+')

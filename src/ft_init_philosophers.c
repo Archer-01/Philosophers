@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/22 06:21:30 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 04:41:05 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ t_philosopher	*ft_init_philosophers(t_philo_data *philo_data)
 	if (philo_data == NULL)
 		return (NULL);
 	philo_count = philo_data->philo_args->philo_count;
+	if (philo_count == 0)
+		return (NULL);
 	philosophers = ft_allocate(philo_count, sizeof(t_philosopher));
 	if (philosophers == NULL)
 		return (NULL);
@@ -89,10 +91,8 @@ t_philosopher	*ft_init_philosophers(t_philo_data *philo_data)
 		philo_success
 			= ft_create_philosopher
 			(&philosophers[i], i + 1, &philosophers[i], philo_data);
-		if (philo_success == FALSE)
-		{
-			free(philosophers);
-			return (NULL);
+		if (philo_success == FALSE) {
+			return (free(philosophers), NULL);
 		}
 		++i;
 	}

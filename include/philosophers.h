@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 05:58:25 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 04:35:04 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv, \
 	time_t *begin_timestamp);
 void			ft_destroy_philo_data(t_philo_data *philo_data);
 t_philosopher	*ft_init_philosophers(t_philo_data *philo_data);
+t_philosopher	*ft_philosophers(int argc, char **argv);
+void			ft_destroy_philosophers(t_philosopher *philosophers);
 
 t_bool			ft_think(t_philosopher *philo);
 t_bool			ft_get_fork(t_philosopher *philo, unsigned int fork_id);

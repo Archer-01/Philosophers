@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 05:45:55 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 05:57:47 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:47:40 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ t_bool	ft_thread_print(const char *activity, time_t timestamp,
 		return (FALSE);
 	if (ft_lock_mutex(writing_mutex) == FALSE)
 		return (FALSE);
+	if (ft_strcmp(activity, ACT_DEATH) == 0)
+	{
+		printf("%ld %u died\n", timestamp, philo_id);
+		return (TRUE);
+	}
 	ft_print_appropriate_message(activity, timestamp, philo_id);
 	if (ft_unlock_mutex(writing_mutex) == FALSE)
 		return (FALSE);

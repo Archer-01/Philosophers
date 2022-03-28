@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mutexes.c                                       :+:      :+:    :+:   */
+/*   ft_mutexes_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 03:48:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 05:22:25 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 07:00:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ pthread_mutex_t	*ft_init_mutexes(size_t count)
  * @param mutex: pointer on mutex to destroy
  * @return t_bool: TRUE on success, FALSE otherwise
  */
-static t_bool	ft_destroy_mutex(pthread_mutex_t *mutex)
+t_bool	ft_destroy_mutex(pthread_mutex_t *mutex)
 {
 	int	destroy_ret;
 
@@ -78,11 +78,11 @@ static t_bool	ft_destroy_mutex(pthread_mutex_t *mutex)
 	destroy_ret = pthread_mutex_destroy(mutex);
 	if (destroy_ret != 0)
 	{
-		ft_putendl_fd(E_MUTEX_DESTROY, STDERR_FILENO);
-		return (FALSE);
+		if (ft_unlock_mutex(mutex) == FALSE)
+			return (FALSE);
+		pthread_mutex_destroy(mutex);
 	}
-	else
-		return (TRUE);
+	return (TRUE);
 }
 
 /**

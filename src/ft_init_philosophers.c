@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 04:41:05 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:45:21 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static t_bool	ft_create_philosopher(t_philosopher *philo, int philo_id,
 		return (FALSE);
 	philo->id = philo_id;
 	philo->philo_data = philo_data;
+	philo->last_eat_time = *(philo->philo_data->begin_timestamp);
 	thread_success
 		= ft_create_thread(&philo->philo_thread, &ft_philo_routine, arg);
 	if (thread_success == FALSE)
@@ -91,9 +92,8 @@ t_philosopher	*ft_init_philosophers(t_philo_data *philo_data)
 		philo_success
 			= ft_create_philosopher
 			(&philosophers[i], i + 1, &philosophers[i], philo_data);
-		if (philo_success == FALSE) {
+		if (philo_success == FALSE)
 			return (free(philosophers), NULL);
-		}
 		++i;
 	}
 	return (philosophers);

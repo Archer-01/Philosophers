@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 04:34:55 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:45:48 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 	philosophers = ft_philosophers(argc, argv);
 	if (philosophers == NULL)
 		return (EXIT_FAILURE);
-	sleep(1);
+	ft_philo_reaper
+		(philosophers, philosophers[0].philo_data->philo_args->philo_count);
 	ft_destroy_philosophers(philosophers);
 	return (0);
 }

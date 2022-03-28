@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 03:49:16 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 04:55:32 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 10:37:07 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv,
 		return (NULL);
 	}
 	philo_data->begin_timestamp = begin_timestamp;
+	philo_data->did_someone_die = FALSE;
 	philo_data->philo_args = ft_parse_philo_args(argc, argv);
 	if (philo_data->philo_args == NULL)
 	{

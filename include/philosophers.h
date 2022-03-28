@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 04:35:04 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/28 07:01:01 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define ACT_FORK "Take a fork"
 # define ACT_EAT "Eat"
 # define ACT_SLEEP "Sleep"
+# define ACT_DEATH "Death"
 
 typedef enum e_bool
 {
@@ -60,6 +61,7 @@ typedef struct philo_data
 	pthread_mutex_t	*fork_mutexes;
 	time_t			*begin_timestamp;
 	pthread_mutex_t	writing_mutex;
+	t_bool			did_someone_die;
 }	t_philo_data;
 
 typedef struct s_philosopher
@@ -67,6 +69,7 @@ typedef struct s_philosopher
 	unsigned int	id;
 	pthread_t		philo_thread;
 	t_philo_data	*philo_data;
+	time_t			last_eat_time;
 }	t_philosopher;
 
 typedef void	*(*t_routine)(void *);
@@ -83,6 +86,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 t_philo_args	*ft_parse_philo_args(int argc, char **argv);
 t_bool			ft_create_mutex(pthread_mutex_t *mutex);
 pthread_mutex_t	*ft_init_mutexes(size_t count);
+t_bool			ft_destroy_mutex(pthread_mutex_t *mutex);
 t_bool			ft_destroy_mutexes(pthread_mutex_t *mutexes, size_t count);
 t_bool			ft_lock_mutex(pthread_mutex_t *mutex);
 t_bool			ft_unlock_mutex(pthread_mutex_t *mutex);
@@ -105,5 +109,8 @@ t_bool			ft_thread_print(const char *activity, time_t timestamp, \
 
 t_bool			ft_get_timestamp(time_t *timestamp_ptr);
 time_t			*ft_get_timestamp_ptr(void);
+
+t_bool			ft_philo_reaper(t_philosopher *philosophers, \
+	size_t philo_count);
 
 #endif

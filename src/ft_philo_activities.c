@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:50:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 04:39:03 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 13:44:46 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,7 @@ t_bool	ft_release_fork(t_philosopher *philo, unsigned int fork_id)
 	forks = philo->philo_data->fork_mutexes;
 	unlock_ret = pthread_mutex_unlock(&forks[fork_id]);
 	if (unlock_ret != 0)
-	{
-		ft_putendl_fd(E_MUTEX_UNLOCK, STDERR_FILENO);
 		return (FALSE);
-	}
 	else
 		return (TRUE);
 }

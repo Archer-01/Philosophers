@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 05:36:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/23 05:40:12 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 13:43:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ t_bool	ft_unlock_mutex(pthread_mutex_t *mutex)
 		return (FALSE);
 	unlock_ret = pthread_mutex_unlock(mutex);
 	if (unlock_ret != 0)
-	{
-		ft_putendl_fd(E_MUTEX_UNLOCK, STDERR_FILENO);
 		return (FALSE);
-	}
 	else
 		return (TRUE);
 }

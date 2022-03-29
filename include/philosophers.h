@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 04:36:10 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 13:46:00 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define E_THREAD_CREAT "Error. failed to create thread"
 # define E_TIMESTAMP "Error. gettimeofday failed"
 # define E_MUTEX_LOCK "Error. failed to lock mutex"
-# define E_MUTEX_UNLOCK "Error. failed to unlock mutex"
 # define E_INVAL_ACT "Error. Invalid philosopher activity"
 
 # define ACT_THINK "Think"

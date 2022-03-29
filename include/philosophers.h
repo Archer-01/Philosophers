@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 07:01:01 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 04:36:10 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_bool			ft_sleep(t_philosopher *philo);
 void			*ft_philo_routine(void *arg);
 
 t_bool			ft_thread_print(const char *activity, time_t timestamp, \
-	unsigned int philo_id, pthread_mutex_t *writing_mutex);
+	t_philosopher *philo);
 
 t_bool			ft_get_timestamp(time_t *timestamp_ptr);
 time_t			*ft_get_timestamp_ptr(void);

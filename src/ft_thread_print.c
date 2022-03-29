@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 05:45:55 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 10:47:40 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 04:51:09 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,31 @@ static void	ft_print_appropriate_message(const char *activity, time_t timestamp,
  *
  * @param activity: activity string
  * @param timestamp: current timestamp
- * @param philo_id: philosopher ID (IDentifier)
- * @param writing_mutex: writing_mutex
+ * @param philo: philosopher data
  * @return t_bool: TRUE on success, FALSE otherwise
  */
 t_bool	ft_thread_print(const char *activity, time_t timestamp,
-	unsigned int philo_id, pthread_mutex_t *writing_mutex)
+	t_philosopher *philo)
 {
-	if (activity == NULL || writing_mutex == NULL)
+	time_t	curr_timestamp;
+
+	if (activity == NULL || philo == NULL)
 		return (FALSE);
-	if (ft_lock_mutex(writing_mutex) == FALSE)
+	if (ft_lock_mutex(&philo->philo_data->writing_mutex) == FALSE)
 		return (FALSE);
 	if (ft_strcmp(activity, ACT_DEATH) == 0)
 	{
-		printf("%ld %u died\n", timestamp, philo_id);
+		printf("%ld %u died\n", timestamp, philo->id);
 		return (TRUE);
 	}
-	ft_print_appropriate_message(activity, timestamp, philo_id);
-	if (ft_unlock_mutex(writing_mutex) == FALSE)
+	if (ft_strcmp(activity, ACT_EAT) == 0)
+	{
+		if (ft_get_timestamp(&curr_timestamp) == FALSE)
+			return (FALSE);
+		philo->last_eat_time = curr_timestamp;
+	}
+	ft_print_appropriate_message(activity, timestamp, philo->id);
+	if (ft_unlock_mutex(&philo->philo_data->writing_mutex) == FALSE)
 		return (FALSE);
 	else
 		return (TRUE);

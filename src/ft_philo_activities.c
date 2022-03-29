@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:50:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/24 09:53:57 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 04:39:03 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ t_bool	ft_think(t_philosopher *philo)
 {
 	time_t			curr_timestamp;
 	time_t			*begin_timestamp;
-	unsigned int	philo_id;
 
 	if (philo == NULL)
 		return (FALSE);
 	if (ft_get_timestamp(&curr_timestamp) == FALSE)
 		return (FALSE);
-	philo_id = philo->id;
 	begin_timestamp = philo->philo_data->begin_timestamp;
-	ft_thread_print(ACT_THINK, curr_timestamp - *begin_timestamp, philo_id,
-		&philo->philo_data->writing_mutex);
+	ft_thread_print(ACT_THINK, curr_timestamp - *begin_timestamp, philo);
 	return (TRUE);
 }
 
@@ -49,7 +46,6 @@ t_bool	ft_get_fork(t_philosopher *philo, unsigned int fork_id)
 	int				lock_ret;
 	time_t			*begin_timestamp;
 	time_t			curr_timestamp;
-	unsigned int	philo_id;
 	pthread_mutex_t	*forks;
 
 	if (philo == NULL)
@@ -63,19 +59,15 @@ t_bool	ft_get_fork(t_philosopher *philo, unsigned int fork_id)
 	}
 	else
 	{
-		philo_id = philo->id;
 		begin_timestamp = philo->philo_data->begin_timestamp;
 		if (ft_get_timestamp(&curr_timestamp) == FALSE)
 			return (FALSE);
-		ft_thread_print(ACT_FORK, curr_timestamp - *begin_timestamp, philo_id,
-			&philo->philo_data->writing_mutex);
+		ft_thread_print(ACT_FORK, curr_timestamp - *begin_timestamp, philo);
 		return (TRUE);
 	}
 }
 
 /**
-	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo_id,
-		&philo->philo_data->writing_mutex);
  * @brief Eat (Philosopher activity)
  * Sleep for time_to_eat ms & print message
  *
@@ -86,18 +78,15 @@ t_bool	ft_eat(t_philosopher *philo)
 {
 	time_t			*begin_timestamp;
 	time_t			curr_timestamp;
-	unsigned int	philo_id;
 	unsigned int	time_to_eat;
 
 	if (philo == NULL)
 		return (FALSE);
-	philo_id = philo->id;
 	time_to_eat = philo->philo_data->philo_args->time_to_eat;
 	begin_timestamp = philo->philo_data->begin_timestamp;
 	if (ft_get_timestamp(&curr_timestamp) == FALSE)
 		return (FALSE);
-	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo_id,
-		&philo->philo_data->writing_mutex);
+	ft_thread_print(ACT_EAT, curr_timestamp - *begin_timestamp, philo);
 	if (usleep(time_to_eat * 1000) == -1)
 		return (FALSE);
 	else
@@ -139,20 +128,17 @@ t_bool	ft_release_fork(t_philosopher *philo, unsigned int fork_id)
  */
 t_bool	ft_sleep(t_philosopher *philo)
 {
-	unsigned int	philo_id;
 	unsigned int	time_to_sleep;
 	time_t			*begin_timestamp;
 	time_t			curr_timestamp;
 
 	if (philo == NULL)
 		return (FALSE);
-	philo_id = philo->id;
 	time_to_sleep = philo->philo_data->philo_args->time_to_sleep;
 	begin_timestamp = philo->philo_data->begin_timestamp;
 	if (ft_get_timestamp(&curr_timestamp) == FALSE)
 		return (FALSE);
-	ft_thread_print(ACT_SLEEP, curr_timestamp - *begin_timestamp, philo_id,
-		&philo->philo_data->writing_mutex);
+	ft_thread_print(ACT_SLEEP, curr_timestamp - *begin_timestamp, philo);
 	if (usleep(time_to_sleep * 1000) == -1)
 		return (FALSE);
 	else

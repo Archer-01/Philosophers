@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 05:47:49 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 04:37:44 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 11:33:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ static t_bool	ft_this_philosopher_is_dead(t_philosopher *philo,
 {
 	time_t	last_eat_time;
 	time_t	time_to_die;
+	time_t	start;
 
 	time_to_die = philo->philo_data->philo_args->time_to_die;
 	last_eat_time = philo->last_eat_time;
-	if ((curr_timestamp - last_eat_time) >= time_to_die)
+	start = *(philo->philo_data->begin_timestamp);
+	if ((curr_timestamp - start) - last_eat_time >= time_to_die + last_eat_time)
 		return (TRUE);
 	else
 		return (FALSE);

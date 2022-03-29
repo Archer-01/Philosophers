@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 05:45:55 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 04:51:09 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/29 11:33:29 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ t_bool	ft_thread_print(const char *activity, time_t timestamp,
 	{
 		if (ft_get_timestamp(&curr_timestamp) == FALSE)
 			return (FALSE);
-		philo->last_eat_time = curr_timestamp;
+		philo->last_eat_time
+			= curr_timestamp - *(philo->philo_data->begin_timestamp);
 	}
 	ft_print_appropriate_message(activity, timestamp, philo->id);
 	if (ft_unlock_mutex(&philo->philo_data->writing_mutex) == FALSE)

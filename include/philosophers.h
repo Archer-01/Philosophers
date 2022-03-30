@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 13:46:00 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/30 06:58:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_philosopher
 	pthread_t		philo_thread;
 	t_philo_data	*philo_data;
 	time_t			last_eat_time;
+	unsigned int	eat_count;
 }	t_philosopher;
 
 typedef void	*(*t_routine)(void *);

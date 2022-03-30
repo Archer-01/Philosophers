@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 02:50:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/29 13:44:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/03/30 08:10:52 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ t_bool	ft_eat(t_philosopher *philo)
 	if (usleep(time_to_eat * 1000) == -1)
 		return (FALSE);
 	else
+	{
+		++(philo->eat_count);
 		return (TRUE);
+	}
 }
 
 /**

@@ -21,23 +21,32 @@ LIBS		:=
 RM		:= rm -rf
 MKDIR	:= mkdir -p
 
+# *********************************** Colors ***********************************
+NC		:= '\033[0m'
+GREEN	:= '\033[32m'
+RED		:= '\033[0;31m'
+
 # ********************************** Targets ***********************************
 all: $(NAME)
 
 $(NAME): $(addprefix $(OBJS_DIR)/, $(OBJS)) $(MAIN) \
 			$(addprefix $(INCLUDES_DIR)/, $(HEADERS))
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(addprefix $(OBJS_DIR)/, $(OBJS)) \
+	@echo "Compiling" $(GREEN) "main"
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBS) $(addprefix $(OBJS_DIR)/, $(OBJS)) \
 $(MAIN) -o $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(addprefix $(INCLUDES_DIR)/, $(HEADERS))
 	@$(MKDIR) $(OBJS_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+	@echo "Compiling" $(GREEN) $(basename $(shell basename $<)) $(NC)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 clean:
-	$(RM) $(OBJS_DIR)
+	@echo "Removing" $(RED) "object files" $(NC)
+	@$(RM) $(OBJS_DIR)
 
 fclean:	clean
-	$(RM) $(NAME)
+	@echo "Removing" $(RED) philo $(NC)
+	@$(RM) $(NAME)
 
 re: fclean all
 

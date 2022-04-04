@@ -5,7 +5,7 @@ OBJS_DIR		:= obj
 LIBS_DIR		:=
 
 # *********************************** Files ************************************
-NAME	:= philo
+NAME	:= philo_bonus
 MAIN	:= main.c
 SRCS	:= $(shell ls $(SRCS_DIR))
 OBJS	:= $(SRCS:.c=.o)

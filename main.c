@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/20 09:26:30 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/04 14:20:14 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	philo_args = ft_parse_philo_args(argc, argv);
 	if (philo_args == NULL)
 		return (EXIT_FAILURE);
-	printf("philosophers is loading...\n");
+	printf("philosophers (bonus) is loading...\n");
 	free(philo_args);
 	return (0);
 }

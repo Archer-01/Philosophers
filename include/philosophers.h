@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 04:03:00 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/04 14:15:21 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <signal.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <semaphore.h>
 
 # define E_USAGE_MSG "Usage: ./philo philo_num death_time eat_time sleep_time \
 [min_eat_count]"

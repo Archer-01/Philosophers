@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/05 10:36:30 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/05 10:59:24 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define E_THREAD_CREATE_MSG "Error. failed to create thread"
 # define E_THREAD_DETACH_MSG "Error. failed to detach thread"
 # define E_THREAD_JOIN_MSG "Error. failed to join thread"
+# define E_GETTIME_MSG "Error. gettimeofday failed"
 
 typedef enum e_bool
 {
@@ -77,5 +78,7 @@ t_bool			ft_pthread_create(pthread_t *thread, t_routine routine, \
 	void *arg);
 t_bool			ft_pthread_detach(pthread_t thread);
 t_bool			ft_pthread_join(pthread_t thread);
+
+t_bool			ft_gettimeofday(time_t *timestamp);
 
 #endif

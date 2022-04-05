@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/05 09:39:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/05 10:36:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 # define E_SEM_POST_MSG "Error. failed to post semaphore"
 # define E_SEM_WAIT_MSG "Error. failed to wait semaphore"
 # define E_SEM_UNLINK_MSG "Error. failed to unlink semaphore"
+# define E_THREAD_CREATE_MSG "Error. failed to create thread"
+# define E_THREAD_DETACH_MSG "Error. failed to detach thread"
+# define E_THREAD_JOIN_MSG "Error. failed to join thread"
 
 typedef enum e_bool
 {
@@ -53,6 +56,8 @@ typedef struct s_philo_args
 	unsigned int	min_eat_count;
 }	t_philo_args;
 
+typedef void	*(*t_routine)(void *);
+
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
@@ -67,5 +72,10 @@ t_bool			ft_sem_close(sem_t *sem);
 t_bool			ft_sem_unlink(const char *name);
 t_bool			ft_sem_post(sem_t *sem);
 t_bool			ft_sem_wait(sem_t *sem);
+
+t_bool			ft_pthread_create(pthread_t *thread, t_routine routine, \
+	void *arg);
+t_bool			ft_pthread_detach(pthread_t thread);
+t_bool			ft_pthread_join(pthread_t thread);
 
 #endif

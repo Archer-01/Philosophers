@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/05 10:59:24 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/05 11:37:28 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define E_THREAD_JOIN_MSG "Error. failed to join thread"
 # define E_GETTIME_MSG "Error. gettimeofday failed"
 
+# define FORK_SEM_NAME "/fork_sem"
+# define WRITE_SEM_NAME "/writing_sem"
+
 typedef enum e_bool
 {
 	FALSE = 0,
@@ -58,6 +61,14 @@ typedef struct s_philo_args
 }	t_philo_args;
 
 typedef void	*(*t_routine)(void *);
+
+typedef struct s_philo_data
+{
+	t_philo_args	*philo_args;
+	sem_t			*fork_sem;
+	sem_t			*writing_sem;
+	time_t			begin_time;
+}	t_philo_data;
 
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
@@ -80,5 +91,8 @@ t_bool			ft_pthread_detach(pthread_t thread);
 t_bool			ft_pthread_join(pthread_t thread);
 
 t_bool			ft_gettimeofday(time_t *timestamp);
+
+t_philo_data	*ft_init_philo_data(t_philo_args *philo_args);
+void			ft_destroy_philo_data(t_philo_data *philo_data);
 
 #endif

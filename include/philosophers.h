@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 09:21:42 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/06 09:44:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define E_THREAD_DETACH_MSG "Error. failed to detach thread"
 # define E_THREAD_JOIN_MSG "Error. failed to join thread"
 # define E_GETTIME_MSG "Error. gettimeofday failed"
+# define E_FORK_MSG "Error. fork failed to create a process"
+# define E_WAITPID_MSG "Error. failed to wait for a process"
 
 # define FORK_SEM_NAME "/fork_sem"
 # define WRITE_SEM_NAME "/writing_sem"
@@ -94,5 +96,8 @@ t_bool			ft_gettimeofday(time_t *timestamp);
 
 t_philo_data	*ft_init_philo_data(int argc, char **argv);
 void			ft_destroy_philo_data(t_philo_data *philo_data);
+
+pid_t			ft_fork(void);
+pid_t			ft_waitpid(pid_t pid);
 
 #endif

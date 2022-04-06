@@ -45,7 +45,7 @@ clean:
 	@$(RM) $(OBJS_DIR)
 
 fclean:	clean
-	@echo "Removing" $(RED) philo $(NC)
+	@echo "Removing" $(RED) $(NAME) $(NC)
 	@$(RM) $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:35:09 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 09:41:03 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/06 10:03:45 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ pid_t	ft_fork(void)
 	if (pid == -1)
 	{
 		ft_putendl_fd(E_FORK_MSG, STDERR_FILENO);
-		return ((pid_t) -1);
+		return ((pid_t)(-1));
 	}
 	else
 	{
@@ -47,7 +47,7 @@ pid_t	ft_waitpid(pid_t pid)
 	if (ret == -1)
 	{
 		ft_putendl_fd(E_WAITPID_MSG, STDERR_FILENO);
-		return ((pid_t) -1);
+		return ((pid_t)(-1));
 	}
 	else
 	{

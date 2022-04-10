@@ -109,4 +109,6 @@ pid_t			*ft_create_philosophers(t_philo_data *philo_data);
 t_bool			ft_wait_philosophers(pid_t *pids, size_t count);
 t_bool			ft_kill_philosophers(pid_t *pids, size_t start, size_t count);
 
+void			ft_philosopher(unsigned int id, t_philo_data *philo_data);
+
 #endif

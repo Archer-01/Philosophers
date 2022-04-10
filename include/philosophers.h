@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 10:16:13 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/10 11:11:07 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define E_FORK_MSG "Error. fork failed to create a process"
 # define E_WAITPID_MSG "Error. failed to wait for a process"
 # define E_KILL_MSG "Error. failed to kill a process"
+# define E_PROCESS_EXIT_MSG "Error. child process exited with failure"
 
 # define FORK_SEM_NAME "/fork_sem"
 # define WRITE_SEM_NAME "/writing_sem"
@@ -100,7 +101,7 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv);
 void			ft_destroy_philo_data(t_philo_data *philo_data);
 
 pid_t			ft_fork(void);
-pid_t			ft_waitpid(pid_t pid);
+t_bool			ft_waitpid(pid_t pid);
 
 int				ft_kill(pid_t pid, int sig);
 

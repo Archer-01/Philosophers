@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:35:09 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 10:03:45 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/10 10:18:27 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,33 @@ pid_t	ft_fork(void)
  * @brief Wait for process to change state
  *
  * @param pid: Process ID
- * @return pid_t: Process ID, -1 on failure
+ * @return t_bool: TRUE if process terminated successfully, FALSE otherwise
  */
-pid_t	ft_waitpid(pid_t pid)
+t_bool	ft_waitpid(pid_t pid)
 {
 	int	ret;
+	int	status;
 
-	ret = waitpid(pid, NULL, 0);
+	ret = waitpid(pid, &status, 0);
 	if (ret == -1)
 	{
 		ft_putendl_fd(E_WAITPID_MSG, STDERR_FILENO);
-		return ((pid_t)(-1));
+		return (FALSE);
 	}
 	else
 	{
-		return (pid);
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
+			ft_putendl_fd(E_PROCESS_EXIT_MSG, STDERR_FILENO);
+			return (FALSE);
+		}
+		else if (WIFEXITED(status) && WEXITSTATUS(status) == 0)
+		{
+			return (TRUE);
+		}
+		else
+		{
+			return (FALSE);
+		}
 	}
 }

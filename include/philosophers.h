@@ -105,4 +105,8 @@ t_bool			ft_waitpid(pid_t pid);
 
 int				ft_kill(pid_t pid, int sig);
 
+pid_t			*ft_create_philosophers(t_philo_data *philo_data);
+t_bool			ft_wait_philosophers(pid_t *pids, size_t count);
+t_bool			ft_kill_philosophers(pid_t *pids, size_t start, size_t count);
+
 #endif

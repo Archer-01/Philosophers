@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 09:34:47 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/11 12:46:39 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/11 12:56:56 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_philosopher	*ft_init_philosopher(unsigned int id,
 	philo->philo_data = philo_data;
 	philo->last_eat_time = 0;
 	philo->eat_count = 0;
+	philo->is_dead = FALSE;
 	return (philo);
 }
 

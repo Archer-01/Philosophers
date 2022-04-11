@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:34:22 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/10 11:16:01 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/11 10:05:37 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	ft_destroy_philo_data(philo_data);
+	ft_sem_unlink(FORK_SEM_NAME);
+	ft_sem_unlink(WRITE_SEM_NAME);
 	free(pids);
 	return (0);
 }

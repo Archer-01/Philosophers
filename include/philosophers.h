@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/10 11:11:07 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/11 11:39:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ typedef struct s_philo_data
 	time_t			begin_time;
 }	t_philo_data;
 
+typedef struct s_philosopher
+{
+	unsigned int	id;
+	t_philo_data	*philo_data;
+	time_t			last_eat_time;
+	unsigned int	eat_count;
+}	t_philosopher;
+
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
@@ -110,5 +118,7 @@ t_bool			ft_wait_philosophers(pid_t *pids, size_t count);
 t_bool			ft_kill_philosophers(pid_t *pids, size_t start, size_t count);
 
 void			ft_philosopher(unsigned int id, t_philo_data *philo_data);
+
+t_bool			ft_philo_thread(t_philosopher *philo);
 
 #endif

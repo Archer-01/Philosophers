@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 09:34:47 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/11 11:40:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/11 12:46:39 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_philosopher	*ft_init_philosopher(unsigned int id,
 	return (philo);
 }
 
-void	ft_philosopher(unsigned int id, t_philo_data *philo_data)
+void	ft_philo_process(unsigned int id, t_philo_data *philo_data)
 {
 	t_philosopher	*philo;
 

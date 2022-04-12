@@ -129,4 +129,6 @@ t_bool			ft_eat(t_philosopher *philo);
 t_bool			ft_release_fork(t_philosopher *philo);
 t_bool			ft_sleep(t_philosopher *philo);
 
+t_bool			ft_philo_reaper(t_philosopher *philo);
+
 #endif

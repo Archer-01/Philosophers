@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 18:11:05 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:28:56 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int				ft_kill(pid_t pid, int sig);
 
 pid_t			*ft_create_philosophers(t_philo_data *philo_data);
 t_bool			ft_wait_philosophers(pid_t *pids, size_t count);
-t_bool			ft_kill_philosophers(pid_t *pids, size_t start, size_t count);
+t_bool			ft_kill_philosophers(pid_t *pids, size_t count);
 
 void			ft_philo_process(unsigned int id, t_philo_data *philo_data);
 

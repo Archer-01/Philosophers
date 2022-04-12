@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:12:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 07:51:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:29:12 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ pid_t	*ft_create_philosophers(t_philo_data *philo_data)
 		pids[i] = ft_fork();
 		if (pids[i] == -1)
 		{
-			ft_kill_philosophers(pids, 0, i);
+			ft_kill_philosophers(pids, philo_count);
 			free(pids);
 			return (NULL);
 		}
@@ -66,9 +66,9 @@ t_bool	ft_wait_philosophers(pid_t *pids, size_t count)
 	i = 0;
 	while (i < count)
 	{
-		if (ft_waitpid(pids[i]) == FALSE)
+		if (ft_waitpid(-1) == FALSE)
 		{
-			ft_kill_philosophers(pids, i, count);
+			ft_kill_philosophers(pids, i);
 			return (FALSE);
 		}
 		++i;
@@ -84,7 +84,7 @@ t_bool	ft_wait_philosophers(pid_t *pids, size_t count)
  * @param count: number of processes to kill starting from start index
  * @return t_bool: TRUE on success, FALSE otherwise
  */
-t_bool	ft_kill_philosophers(pid_t *pids, size_t start, size_t count)
+t_bool	ft_kill_philosophers(pid_t *pids, size_t count)
 {
 	size_t	i;
 
@@ -92,7 +92,7 @@ t_bool	ft_kill_philosophers(pid_t *pids, size_t start, size_t count)
 	{
 		return (FALSE);
 	}
-	i = start;
+	i = 0;
 	while (i < count)
 	{
 		ft_kill(pids[i], SIGTERM);

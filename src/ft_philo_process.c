@@ -6,12 +6,19 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 09:34:47 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/11 12:56:56 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 07:55:25 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+/**
+ * @brief Initialize philosopher (process)
+ *
+ * @param id: philosopher ID
+ * @param philo_data: philosophers data (arguments, semaphores, ...)
+ * @return t_philosopher*: philosopher object, NULL on failure
+ */
 static t_philosopher	*ft_init_philosopher(unsigned int id,
 	t_philo_data *philo_data)
 {
@@ -30,6 +37,12 @@ static t_philosopher	*ft_init_philosopher(unsigned int id,
 	return (philo);
 }
 
+/**
+ * @brief Philosopher process (This function always exits)
+ *
+ * @param id: philosopher ID
+ * @param philo_data: philosophers data (arguments, semaphores, ...)
+ */
 void	ft_philo_process(unsigned int id, t_philo_data *philo_data)
 {
 	t_philosopher	*philo;

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:52:34 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 10:09:29 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 13:14:57 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_bool	ft_gettimeofday(time_t *timestamp)
  * @brief Suspend thread execution for an interval measured in microseconds
  *
  * @param time: time interval in microseconds
- * @return int: 0 on success, -1 on failure
+ * @return t_bool: TRUE on success, FALSE on failure
  */
-int	ft_usleep(useconds_t time)
+t_bool	ft_usleep(useconds_t time)
 {
 	int	ret;
 
@@ -54,10 +54,10 @@ int	ft_usleep(useconds_t time)
 	if (ret == -1)
 	{
 		ft_putendl_fd(E_USAGE_MSG, STDERR_FILENO);
-		return (-1);
+		return (FALSE);
 	}
 	else
 	{
-		return (0);
+		return (TRUE);
 	}
 }

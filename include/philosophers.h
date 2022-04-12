@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 10:52:31 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 13:15:07 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_bool			ft_pthread_detach(pthread_t thread);
 t_bool			ft_pthread_join(pthread_t thread);
 
 t_bool			ft_gettimeofday(time_t *timestamp);
-int				ft_usleep(useconds_t time);
+t_bool			ft_usleep(useconds_t time);
 
 t_philo_data	*ft_init_philo_data(int argc, char **argv);
 void			ft_destroy_philo_data(t_philo_data *philo_data);

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 13:15:07 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:11:05 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define E_WAITPID_MSG "Error. failed to wait for a process"
 # define E_KILL_MSG "Error. failed to kill a process"
 # define E_PROCESS_EXIT_MSG "Error. child process exited with failure"
+# define E_USLEEP_MSG "Error. usleep failed"
 
 # define FORK_SEM_NAME "/fork_sem"
 # define WRITE_SEM_NAME "/writing_sem"

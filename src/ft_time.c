@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:52:34 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 13:14:57 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:11:14 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_bool	ft_usleep(useconds_t time)
 	ret = usleep(time);
 	if (ret == -1)
 	{
-		ft_putendl_fd(E_USAGE_MSG, STDERR_FILENO);
+		ft_putendl_fd(E_USLEEP_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	else

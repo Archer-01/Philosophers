@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 11:34:11 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 10:42:05 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:15:06 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	*ft_philo_routine(void *arg)
 		return (NULL);
 	}
 	philo = (t_philosopher *) arg;
-	while (TRUE)
+	while (philo->is_dead == FALSE)
 	{
 		if (ft_get_fork(philo) == FALSE)
 			return (NULL);
@@ -49,7 +49,10 @@ t_bool	ft_philo_thread(t_philosopher *philo)
 		return (FALSE);
 	if (ft_pthread_create(&thread, &ft_philo_routine, philo) == FALSE)
 		return (FALSE);
-	if (ft_pthread_join(thread) == FALSE)
+	if (ft_pthread_detach(thread) == FALSE)
 		return (FALSE);
-	return (TRUE);
+	if (ft_philo_reaper(philo) == FALSE)
+		return (FALSE);
+	else
+		return (TRUE);
 }

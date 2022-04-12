@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/06 09:25:54 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 07:43:14 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv)
 	}
 	philo_data->philo_args = philo_args;
 	philo_data->fork_sem = ft_sem_open(FORK_SEM_NAME, philo_args->philo_count);
-	if (philo_data->fork_sem == NULL)
+	if (philo_data->fork_sem == SEM_FAILED)
 		return (free(philo_args), NULL);
 	philo_data->writing_sem = ft_sem_open(WRITE_SEM_NAME, 1);
-	if (philo_data->fork_sem == NULL)
+	if (philo_data->fork_sem == SEM_FAILED)
 		return (free(philo_args), NULL);
 	if (ft_gettimeofday(&philo_data->begin_time) == FALSE)
 		return (free(philo_args), NULL);

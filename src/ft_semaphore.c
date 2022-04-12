@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:18:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/05 09:38:28 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 07:42:31 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  *
  * @param name: semaphore name
  * @param value: semaphore initial value
- * @return sem_t*: semaphore object, NULL on failure
+ * @return sem_t*: semaphore object, SEM_FAILED on failure
  */
 sem_t	*ft_sem_open(const char *name, unsigned int value)
 {
@@ -26,13 +26,13 @@ sem_t	*ft_sem_open(const char *name, unsigned int value)
 
 	if (name == NULL)
 	{
-		return (NULL);
+		return (SEM_FAILED);
 	}
 	sem = sem_open(name, O_CREAT, 0600, value);
 	if (sem == SEM_FAILED)
 	{
 		ft_putendl_fd(E_SEM_OPEN_MSG, STDERR_FILENO);
-		return (NULL);
+		return (SEM_FAILED);
 	}
 	else
 	{

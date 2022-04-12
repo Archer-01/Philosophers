@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/11 12:56:35 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 10:52:31 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,11 @@ t_bool			ft_kill_philosophers(pid_t *pids, size_t start, size_t count);
 void			ft_philo_process(unsigned int id, t_philo_data *philo_data);
 
 t_bool			ft_philo_thread(t_philosopher *philo);
+
+t_bool			ft_think(t_philosopher *philo);
+t_bool			ft_get_fork(t_philosopher *philo);
+t_bool			ft_eat(t_philosopher *philo);
+t_bool			ft_release_fork(t_philosopher *philo);
+t_bool			ft_sleep(t_philosopher *philo);
 
 #endif

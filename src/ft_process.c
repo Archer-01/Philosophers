@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 09:35:09 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/10 10:18:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 18:27:11 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_bool	ft_waitpid(pid_t pid)
 	{
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
 		{
-			ft_putendl_fd(E_PROCESS_EXIT_MSG, STDERR_FILENO);
 			return (FALSE);
 		}
 		else if (WIFEXITED(status) && WEXITSTATUS(status) == 0)

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:12:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/11 12:46:39 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 07:51:27 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ pid_t	*ft_create_philosophers(t_philo_data *philo_data)
 	return (pids);
 }
 
+/**
+ * @brief Wait for philosophers (processes) to finish execution.
+ * If a process exits with failure all other processes are killed
+ *
+ * @param pids: PID (Process ID) list
+ * @param count: PID (Process ID) count
+ * @return t_bool: TRUE on success, FALSE otherwise
+ */
 t_bool	ft_wait_philosophers(pid_t *pids, size_t count)
 {
 	size_t	i;
@@ -68,6 +76,14 @@ t_bool	ft_wait_philosophers(pid_t *pids, size_t count)
 	return (TRUE);
 }
 
+/**
+ * @brief Kill philosophers (process)
+ *
+ * @param pids: PID (Process ID) list
+ * @param start: starting index on PID list
+ * @param count: number of processes to kill starting from start index
+ * @return t_bool: TRUE on success, FALSE otherwise
+ */
 t_bool	ft_kill_philosophers(pid_t *pids, size_t start, size_t count)
 {
 	size_t	i;

@@ -6,11 +6,20 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 07:43:14 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/12 09:46:58 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+/**
+ * @brief Unlink semaphores needed by this program
+ */
+static void	ft_unlink_semaphores(void)
+{
+	sem_unlink(FORK_SEM_NAME);
+	sem_unlink(WRITE_SEM_NAME);
+}
 
 /**
  * @brief Initialize philo data
@@ -26,6 +35,7 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv)
 
 	if (argv == NULL)
 		return (NULL);
+	ft_unlink_semaphores();
 	philo_args = ft_parse_philo_args(argc, argv);
 	if (philo_args == NULL)
 		return (NULL);

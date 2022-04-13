@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:15:47 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 13:15:35 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 09:41:31 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ t_bool	ft_eat(t_philosopher *philo)
 	if (ft_sem_wait(philo->philo_data->writing_sem) == FALSE)
 		return (FALSE);
 	printf("%ld %u is eating\n", curr_time - begin_time, philo->id);
+	philo->last_eat_time = curr_time - begin_time;
 	if (ft_sem_post(philo->philo_data->writing_sem) == FALSE)
 		return (FALSE);
 	if (ft_usleep(time_to_eat * 1000) == FALSE)
 		return (FALSE);
 	else
 	{
-		philo->last_eat_time = curr_time - begin_time;
 		++(philo->eat_count);
 		return (TRUE);
 	}

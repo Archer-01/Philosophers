@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 09:46:58 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 12:15:18 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	ft_destroy_philo_data(t_philo_data *philo_data)
 {
 	if (philo_data == NULL)
 		return ;
-	ft_sem_close(philo_data->fork_sem);
 	ft_sem_close(philo_data->writing_sem);
+	ft_sem_close(philo_data->fork_sem);
 	free(philo_data->philo_args);
 	free(philo_data);
 }

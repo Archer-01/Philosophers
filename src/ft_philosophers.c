@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:12:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 18:29:12 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 09:53:22 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ t_bool	ft_wait_philosophers(pid_t *pids, size_t count)
 	{
 		if (ft_waitpid(-1) == FALSE)
 		{
-			ft_kill_philosophers(pids, i);
-			return (FALSE);
+			ft_kill_philosophers(pids, count);
 		}
 		++i;
 	}

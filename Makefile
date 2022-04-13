@@ -13,7 +13,7 @@ HEADERS	:= $(shell ls $(INCLUDES_DIR))
 
 # ****************************** Compiler Options ******************************
 CC			:= cc
-CFLAGS		:= -Wall -Wextra -Werror -pthread -g
+CFLAGS		:= -Wall -Wextra -Werror -pthread
 INCLUDES	:= -I $(INCLUDES_DIR)
 LIBS		:=
 

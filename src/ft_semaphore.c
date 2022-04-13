@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 09:18:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 07:42:31 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 13:17:18 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_bool	ft_sem_post(sem_t *sem)
 	ret = sem_post(sem);
 	if (ret == -1)
 	{
-		ft_putendl_fd(E_SEM_POST_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	else
@@ -135,7 +134,6 @@ t_bool	ft_sem_wait(sem_t *sem)
 	ret = sem_wait(sem);
 	if (ret == -1)
 	{
-		ft_putendl_fd(E_SEM_WAIT_MSG, STDERR_FILENO);
 		return (FALSE);
 	}
 	else

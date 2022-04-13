@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:12:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/13 09:53:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 10:15:15 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ pid_t	*ft_create_philosophers(t_philo_data *philo_data)
 			return (NULL);
 		}
 		else if (pids[i] == 0)
-			ft_philo_process(i + 1, philo_data);
+			ft_philo_process(i + 1, philo_data, pids);
 		++i;
 	}
 	return (pids);

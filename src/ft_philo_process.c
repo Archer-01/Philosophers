@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 09:34:47 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/12 07:55:25 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/13 10:14:24 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,19 @@ static t_philosopher	*ft_init_philosopher(unsigned int id,
 
 /**
  * @brief Philosopher process (This function always exits)
+ * Also free pid array since its no longer needed
  *
  * @param id: philosopher ID
  * @param philo_data: philosophers data (arguments, semaphores, ...)
+ * @param pids: list of pids to be freed
  */
-void	ft_philo_process(unsigned int id, t_philo_data *philo_data)
+void	ft_philo_process(unsigned int id, t_philo_data *philo_data, pid_t *pids)
 {
 	t_philosopher	*philo;
 
-	if (philo_data == NULL)
+	if (philo_data == NULL || pids == NULL)
 		exit(EXIT_FAILURE);
+	free(pids);
 	philo = ft_init_philosopher(id, philo_data);
 	if (philo == NULL)
 	{

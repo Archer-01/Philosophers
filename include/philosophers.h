@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 04:54:44 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/13 10:14:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/14 22:14:14 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ t_bool			ft_release_fork(t_philosopher *philo);
 t_bool			ft_sleep(t_philosopher *philo);
 
 t_bool			ft_philo_reaper(t_philosopher *philo);
+
+void			ft_single_philosopher(t_philo_args *philo_args);
 
 #endif

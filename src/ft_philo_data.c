@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 11:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/14 17:48:31 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/14 22:14:00 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_philo_data	*ft_init_philo_data(int argc, char **argv)
 	philo_args = ft_parse_philo_args(argc, argv);
 	if (philo_args == NULL)
 		return (NULL);
+	if (philo_args->philo_count == 1)
+		ft_single_philosopher(philo_args);
 	philo_data = ft_allocate(1, sizeof(t_philo_data));
 	if (philo_data == NULL)
 		return (free(philo_args), NULL);

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:48:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/28 04:55:42 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/14 18:37:01 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,11 @@ t_philo_args	*ft_parse_philo_args(int argc, char **argv)
 	if (philo_args == NULL)
 		return (NULL);
 	ft_set_philo_args(argc, argv, philo_args);
+	if (argc == 6 && philo_args->min_eat_count == 0)
+	{
+		free(philo_args);
+		return (NULL);
+	}
 	if (ft_check_philo_args(argv, philo_args) == FALSE)
 	{
 		free(philo_args);

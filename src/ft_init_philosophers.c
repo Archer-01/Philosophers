@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 03:23:07 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/30 06:59:10 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/14 22:52:08 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_bool	ft_create_philosopher(t_philosopher *philo, int philo_id,
 	philo->philo_data = philo_data;
 	philo->last_eat_time = 0;
 	philo->eat_count = 0;
-	usleep(50);
+	usleep(100);
 	thread_success
 		= ft_create_thread(&philo->philo_thread, &ft_philo_routine, arg);
 	if (thread_success == FALSE)

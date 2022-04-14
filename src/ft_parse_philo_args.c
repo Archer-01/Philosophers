@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 06:48:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/03/21 04:03:43 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/14 18:27:55 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@ static void	ft_set_philo_args(int argc, char **argv, t_philo_args *philo_args)
 	philo_args->time_to_sleep = (unsigned int) ft_atoi(argv[4]);
 	philo_args->min_eat_count = 0;
 	if (argc == 6)
+	{
 		philo_args->min_eat_count = (unsigned int) ft_atoi(argv[5]);
+		if (philo_args->min_eat_count == 0)
+		{
+			free(philo_args);
+			exit(EXIT_SUCCESS);
+		}
+	}
 }
 
 /**

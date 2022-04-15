@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 11:12:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/04/13 10:15:15 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/04/15 13:54:10 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ pid_t	*ft_create_philosophers(t_philo_data *philo_data)
 	pids = ft_allocate(philo_count, sizeof(pid_t));
 	if (pids == NULL)
 		return (NULL);
-	i = 0;
-	while (i < philo_count)
+	i = -1;
+	while (++i < philo_count)
 	{
+		if (ft_usleep(100) == FALSE)
+			return (free(pids), NULL);
 		pids[i] = ft_fork();
 		if (pids[i] == -1)
 		{
 			ft_kill_philosophers(pids, philo_count);
-			free(pids);
-			return (NULL);
+			return (free(pids), NULL);
 		}
 		else if (pids[i] == 0)
 			ft_philo_process(i + 1, philo_data, pids);
-		++i;
 	}
 	return (pids);
 }
